@@ -9,7 +9,7 @@
       <bpmn:incoming>Flow_02q59yj</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_088dfxq" sourceRef="Activity_0gn4ut4" targetRef="Activity_0bjx5na" />
-    <bpmn:serviceTask id="Activity_0gn4ut4" name="Charge Credit Card" camunda:type="external" camunda:topic="charge-card">
+    <bpmn:serviceTask id="Activity_0gn4ut4" name="Charge Credit Card" camunda:class="org.camunda.bpm.getstarted.ChargeCard">
       <bpmn:incoming>Flow_0ls2a0l</bpmn:incoming>
       <bpmn:outgoing>Flow_088dfxq</bpmn:outgoing>
     </bpmn:serviceTask>
