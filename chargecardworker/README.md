@@ -1,5 +1,5 @@
 Charge Card Worker camunda java client
-1.bu kodu isletmek ucun bpm fileni deploy edirik ve java kodunu isledirik ve task listden start edirik
+**1.bu kodu isletmek ucun bpm fileni camunda ile gelen timcat serveri start verib  deploy edirik ve java kodunu isledirik ve task listden start edirik**
 2. {
   	"variables": {
   		"amount": {
