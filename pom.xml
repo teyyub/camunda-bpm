@@ -12,6 +12,7 @@
         <module>chargecardworker</module>
         <module>camundabootstarter</module>
         <module>javaprocessapp</module>
+        <module>javaee7</module>
     </modules>
 
 </project>
