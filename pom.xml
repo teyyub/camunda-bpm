@@ -13,6 +13,9 @@
         <module>camundabootstarter</module>
         <module>javaprocessapp</module>
         <module>javaee7</module>
+        <module>camunda-spring-web-starter</module>
+        <module>camunda-spring-web-starter_step2</module>
+        <module>camunda-spring-web-starter_step3</module>
     </modules>
 
 </project>
