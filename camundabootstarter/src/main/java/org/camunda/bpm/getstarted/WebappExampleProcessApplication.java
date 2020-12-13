@@ -20,6 +20,8 @@ public class WebappExampleProcessApplication {
 
     @EventListener
     private void processPostDeploy(PostDeployEvent event) {
-        runtimeService.startProcessInstanceByKey("payment-retrievalv1");
+//        runtimeService.startProcessInstanceByKey("payment-retrievalv1");
+        runtimeService.startProcessInstanceByKey("loanApproval");
+        runtimeService.startProcessInstanceByKey("loanApproval_service_task");
     }
 }
