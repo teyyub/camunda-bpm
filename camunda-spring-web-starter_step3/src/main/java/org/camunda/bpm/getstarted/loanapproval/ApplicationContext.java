@@ -16,7 +16,15 @@
  */
 package org.camunda.bpm.getstarted.loanapproval;
 
-import org.camunda.bpm.engine.*;
+
+import javax.sql.DataSource;
+
+import org.camunda.bpm.engine.HistoryService;
+import org.camunda.bpm.engine.ManagementService;
+import org.camunda.bpm.engine.ProcessEngine;
+import org.camunda.bpm.engine.RepositoryService;
+import org.camunda.bpm.engine.RuntimeService;
+import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.spring.ProcessEngineFactoryBean;
 import org.camunda.bpm.engine.spring.SpringProcessEngineConfiguration;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,20 +35,10 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import javax.sql.DataSource;
+//import javax.sql.DataSource;
 
 @Configuration
 public class ApplicationContext {
-
-    @Bean
-    public Starter starter() {
-        return new Starter();
-    }
-
-    @Bean
-    public CalculateInterestService calculateInterestService() {
-        return new CalculateInterestService();
-    }
 
     @Bean
     public DataSource dataSource() {
@@ -58,8 +56,9 @@ public class ApplicationContext {
     }
 
     @Bean
-    public SpringProcessEngineConfiguration engineConfiguration(DataSource dataSource, PlatformTransactionManager transactionManager
-            , @Value("classpath*:*.bpmn") Resource[] deploymentResources) {
+    public SpringProcessEngineConfiguration engineConfiguration(DataSource dataSource,
+                                                                PlatformTransactionManager transactionManager,
+                                                                @Value("classpath*:*.bpmn") Resource[] deploymentResources) {
         SpringProcessEngineConfiguration configuration = new SpringProcessEngineConfiguration();
 
         configuration.setProcessEngineName("engine");
@@ -106,6 +105,17 @@ public class ApplicationContext {
     @Bean
     public ManagementService managementService(ProcessEngine processEngine) {
         return processEngine.getManagementService();
+    }
+
+
+    @Bean
+    public CalculateInterestService calculateInterestService() {
+        return new CalculateInterestService();
+    }
+
+    @Bean
+    public Starter starter() {
+        return new Starter();
     }
 
 }
