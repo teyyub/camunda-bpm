@@ -33,3 +33,16 @@ public SpringProcessEngineConfiguration engineConfiguration(
 
 bu sekilde olmasi vacibdir
 
+hokmen processes.xml file olmalidir
+
+ <dependency>
+      <groupId>org.camunda.bpm</groupId>
+      <artifactId>camunda-engine</artifactId>
+      <scope>provided</scope>
+    </dependency>
+<scope>provided</scope> olmalidir cunki production codunda bu setr yoxdur ve compile olunmur
+
+contexte @Bean
+             public SpringProcessApplication processApplication() { return new SpringProcessApplication(); }
+             artirildmalidir
+             

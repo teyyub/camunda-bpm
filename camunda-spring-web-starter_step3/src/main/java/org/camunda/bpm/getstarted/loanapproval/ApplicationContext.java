@@ -27,6 +27,7 @@ import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.spring.ProcessEngineFactoryBean;
 import org.camunda.bpm.engine.spring.SpringProcessEngineConfiguration;
+import org.camunda.bpm.engine.spring.application.SpringProcessApplication;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -106,7 +107,8 @@ public class ApplicationContext {
     public ManagementService managementService(ProcessEngine processEngine) {
         return processEngine.getManagementService();
     }
-
+    @Bean
+    public SpringProcessApplication processApplication() { return new SpringProcessApplication(); }
 
     @Bean
     public CalculateInterestService calculateInterestService() {

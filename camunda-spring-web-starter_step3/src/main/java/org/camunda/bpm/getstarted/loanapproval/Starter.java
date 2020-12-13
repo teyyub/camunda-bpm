@@ -10,7 +10,7 @@ public class Starter implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        runtimeService.startProcessInstanceByKey("loadApproval");
+        runtimeService.startProcessInstanceById("loanApproval");
     }
 
     public void setRuntimeService(RuntimeService runtimeService) {
