@@ -13,10 +13,12 @@
         <module>camundabootstarter</module>
         <module>java-app-starter</module>
         <module>java-app-tutorial-2</module>
+        <module>java-app-tutorial-5</module>
         <module>javaee7</module>
         <module>camunda-spring-web-starter</module>
         <module>camunda-spring-web-starter_step2</module>
         <module>camunda-spring-web-starter_step3</module>
+        <!--<module>camunda-spring-web-tutorial-5</module>-->
     </modules>
 
 </project>

@@ -2,12 +2,14 @@ package org.camunda.bpm.getstarted;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
-import org.springframework.stereotype.Component;
 
-@Component
-public class PrintDelegate implements JavaDelegate {
+import java.util.Random;
+
+public class CheckWeather implements JavaDelegate {
     @Override
     public void execute(DelegateExecution delegateExecution) throws Exception {
-        System.out.println("Print Delegate executed");
+        Random r = new Random();
+        delegateExecution.setVariable("name","teyyub");
+        delegateExecution.setVariable("weatherOk",r.nextBoolean());
     }
 }

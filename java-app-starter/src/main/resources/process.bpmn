@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="WINDOWS-1251" standalone="yes"?>
+<definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:tns="http://bpmn.io/schema/bpmn" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:yaoqiang="http://bpmn.sourceforge.net" exporter="Camunda Modeler" exporterVersion="4.0.0" expressionLanguage="http://www.w3.org/1999/XPath" id="Definitions_1wxbh60" name="" targetNamespace="http://bpmn.io/schema/bpmn" typeLanguage="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://bpmn.sourceforge.net/schemas/BPMN20.xsd">
+  <bpmn:process id="SimpleDemo" isClosed="false" isExecutable="true" name="Simple Demo" processType="None">
+    <bpmn:extensionElements>
+      <yaoqiang:description/>
+      <yaoqiang:pageFormat height="841.8897637795276" imageableHeight="831.8897637795276" imageableWidth="588.1102362204724" imageableX="5.0" imageableY="5.0" orientation="0" width="598.1102362204724"/>
+      <yaoqiang:page background="#FFFFFF" horizontalCount="1" verticalCount="1"/>
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="StartEvent_1" isInterrupting="true" name="Process Started" parallelMultiple="false">
+      <bpmn:outgoing>Flow_0ls2a0l</bpmn:outgoing>
+      <bpmn:outputSet/>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0ls2a0l" sourceRef="StartEvent_1" targetRef="Activity_0gn4ut4"/>
+    <bpmn:endEvent id="Event_1cv66bd" name="Process Ended">
+      <bpmn:incoming>Flow_0pd3p63</bpmn:incoming>
+      <bpmn:inputSet/>
+    </bpmn:endEvent>
+    <bpmn:serviceTask camunda:class="org.camunda.bpm.getstarted.CheckWeather" completionQuantity="1" id="Activity_0gn4ut4" implementation="##WebService" isForCompensation="false" name="Check Weather" startQuantity="1">
+      <bpmn:incoming>Flow_0ls2a0l</bpmn:incoming>
+      <bpmn:outgoing>Flow_0u7mok7</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway gatewayDirection="Unspecified" id="Gateway_0yejzc2" name="is weather ok?">
+      <bpmn:incoming>Flow_0u7mok7</bpmn:incoming>
+      <bpmn:outgoing>Flow_1l7t8si</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0pd3p63</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1l7t8si" name="No" sourceRef="Gateway_0yejzc2" targetRef="Activity_0w4yn1v">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${!weatherOk}]]></bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="Event_1nf3ax4">
+      <bpmn:incoming>Flow_0ibvpgc</bpmn:incoming>
+      <bpmn:inputSet/>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0ibvpgc" sourceRef="Activity_0w4yn1v" targetRef="Event_1nf3ax4"/>
+    <bpmn:serviceTask camunda:class="org.camunda.bpm.getstarted.PrintDelegate" completionQuantity="1" id="Activity_0w4yn1v" implementation="##WebService" isForCompensation="false" name="Print about weather" startQuantity="1">
+      <bpmn:incoming>Flow_1l7t8si</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ibvpgc</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0pd3p63" name="Yes" sourceRef="Gateway_0yejzc2" targetRef="Event_1cv66bd">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${weatherOk}]]></bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0u7mok7" sourceRef="Activity_0gn4ut4" targetRef="Gateway_0yejzc2"/>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="Yaoqiang_Diagram-SimpleDemo" name="Untitled Diagram" resolution="96.0">
+    <bpmndi:BPMNPlane bpmnElement="SimpleDemo">
+      <bpmndi:BPMNShape bpmnElement="StartEvent_1" id="Yaoqiang-StartEvent_1">
+        <dc:Bounds height="32.0" width="32.0" x="179.0" y="329.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.84" width="84.0" x="155.5" y="371.56"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="Activity_0gn4ut4" id="Yaoqiang-Activity_0gn4ut4">
+        <dc:Bounds height="80.0" width="100.0" x="270.0" y="307.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.84" width="80.0" x="280.0" y="339.08"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="Event_1nf3ax4" id="Yaoqiang-Event_1nf3ax4">
+        <dc:Bounds height="32.0" width="32.0" x="692.0" y="102.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.84" width="6.0" x="705.0" y="142.08"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="Event_1cv66bd" id="Yaoqiang-Event_1cv66bd">
+        <dc:Bounds height="32.0" width="32.0" x="692.0" y="329.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.84" width="79.0" x="671.0" y="371.56"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="Activity_0w4yn1v" id="Yaoqiang-Activity_0w4yn1v">
+        <dc:Bounds height="80.0" width="100.0" x="530.0" y="80.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="34.84" width="57.0" x="551.5" y="104.58"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="Gateway_0yejzc2" id="Yaoqiang-Gateway_0yejzc2" isMarkerVisible="true">
+        <dc:Bounds height="42.0" width="42.0" x="445.0" y="322.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.84" width="78.0" x="431.0" y="382.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="Flow_1l7t8si" id="Yaoqiang-Flow_1l7t8si">
+        <di:waypoint x="470.0" y="326.0"/>
+        <di:waypoint x="470.0" y="110.0"/>
+        <di:waypoint x="530.0" y="110.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="34.84" width="76.0" x="432.0" y="170.58"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="Flow_0u7mok7" id="Yaoqiang-Flow_0u7mok7">
+        <di:waypoint x="370.0" y="347.0"/>
+        <di:waypoint x="445.0" y="343.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.84" width="6.0" x="404.5" y="335.08"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="Flow_0pd3p63" id="Yaoqiang-Flow_0pd3p63">
+        <di:waypoint x="487.0" y="343.0"/>
+        <di:waypoint x="692.0" y="345.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="34.84" width="74.0" x="552.5" y="326.58"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="Flow_0ls2a0l" id="Yaoqiang-Flow_0ls2a0l">
+        <di:waypoint x="211.0" y="345.0"/>
+        <di:waypoint x="270.0" y="347.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.84" width="6.0" x="237.5" y="336.08"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="Flow_0ibvpgc" id="Yaoqiang-Flow_0ibvpgc">
+        <di:waypoint x="630.0" y="120.0"/>
+        <di:waypoint x="692.0" y="118.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.84" width="6.0" x="658.0" y="109.08"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

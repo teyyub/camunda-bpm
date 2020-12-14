@@ -84,7 +84,7 @@
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1331hba" sourceRef="Activity_0yhwij4" targetRef="Event_1rnl5ui" />
     <bpmn:sequenceFlow id="Flow_1tqe6rz" sourceRef="Activity_0i9m0s8" targetRef="Activity_0qtrbvw" />
-    <bpmn:serviceTask id="Activity_0qtrbvw" name="Report Postcast" camunda:class="">
+    <bpmn:serviceTask id="Activity_0qtrbvw" name="Report Postcast" camunda:class="org.camunda.bpm.getstarted.PrintDelegate">
       <bpmn:incoming>Flow_1tqe6rz</bpmn:incoming>
       <bpmn:outgoing>Flow_1642hwk</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -105,7 +105,7 @@
       <bpmn:startEvent id="Event_1xd8d7i" name="Dark Lord Attack">
         <bpmn:outgoing>Flow_05shuhs</bpmn:outgoing>
         <bpmn:conditionalEventDefinition id="ConditionalEventDefinition_19sm91r">
-          <bpmn:condition xsi:type="bpmn:tFormalExpression">${darkLord}</bpmn:condition>
+          <bpmn:condition xsi:type="bpmn:tFormalExpression">#{darkLord}</bpmn:condition>
         </bpmn:conditionalEventDefinition>
       </bpmn:startEvent>
     </bpmn:subProcess>
